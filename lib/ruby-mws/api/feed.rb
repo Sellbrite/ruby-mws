@@ -18,7 +18,7 @@ module MWS
 
         params[:options] = { :body => content,
                              :headers => {
-                              'Content-MD5' => Base64.encode64(Digest::MD5.digest(content))
+                              'Content-MD5' => Base64.encode64(Digest::MD5.digest(content)).strip
                              }
         }
         send_request(:submit_feed, params, {
