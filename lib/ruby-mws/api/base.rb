@@ -48,7 +48,11 @@ module MWS
         
         query = Query.new params
         
-        resp = self.class.send(params[:verb], query.request_uri)
+        resp = if params[:verb] == :post 
+                 self.class.post(query.request_uri, params[:options])
+               else
+                 self.class.send(params[:verb], query.request_uri)
+               end
 
         @response = if resp.is_a?(Hash)
           Response.parse resp, name, params
