@@ -3,7 +3,10 @@ module MWS
 
     class Product < Base
 
-      def_request [:get_lowest_offer_listings_for_ASIN, :get_matching_product],
+    # GetCompetitivePricingForASIN, GetLowestOfferListingsForASIN, GetMyPriceForASIN
+    # GetMatchingProduct
+      def_request [:get_competitive_pricing_for_asin, :get_lowest_offer_listings_for_asin, 
+                   :get_my_price_for_asin, :get_matching_product],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01',
@@ -14,8 +17,16 @@ module MWS
         #   #lambda {|r| r.collect!{ |p| p.product }}
         # ]
 
-
-
+    # GetCompetitivePricingForSKU, GetLowestOfferListingsForSKU, GetMyPriceForSKU  
+      def_request [:get_competitive_pricing_for_sku, :get_lowest_offer_listings_for_sku, 
+                   :get_my_price_for_sku],
+        :verb => :get,
+        :uri => '/Products/2011-10-01',
+        :version => '2011-10-01',
+        :lists => {
+          :seller_sku_list => "SellerSKUList.SellerSKU"
+        }
+        
 
     end
 
