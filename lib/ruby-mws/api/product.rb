@@ -28,7 +28,7 @@ module MWS
         }
         
       # GetProductCategoriesForSKU, GetProductCategoriesForASIN
-      def_request([:get_product_categories_for_asin, :get_product_categories_for_sku]
+      def_request([:get_product_categories_for_asin, :get_product_categories_for_sku],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01')
