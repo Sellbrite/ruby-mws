@@ -5,8 +5,8 @@ module MWS
 
     # GetCompetitivePricingForASIN, GetLowestOfferListingsForASIN, GetMyPriceForASIN
     # GetMatchingProduct
-      def_request [:get_competitive_pricing_for_asin, :get_lowest_offer_listings_for_asin, 
-                   :get_my_price_for_asin, :get_matching_product],
+      def_request [:get_competitive_pricing_for_ASIN, :get_lowest_offer_listings_for_ASIN, 
+                   :get_my_price_for_ASIN, :get_matching_product],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01',
@@ -18,8 +18,8 @@ module MWS
         # ]
 
     # GetCompetitivePricingForSKU, GetLowestOfferListingsForSKU, GetMyPriceForSKU  
-      def_request [:get_competitive_pricing_for_sku, :get_lowest_offer_listings_for_sku, 
-                   :get_my_price_for_sku],
+      def_request [:get_competitive_pricing_for_SKU, :get_lowest_offer_listings_for_SKU, 
+                   :get_my_price_for_SKU],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01',
@@ -28,7 +28,7 @@ module MWS
         }
         
       # GetProductCategoriesForSKU, GetProductCategoriesForASIN
-      def_request([:get_product_categories_for_asin, :get_product_categories_for_sku],
+      def_request([:get_product_categories_for_ASIN, :get_product_categories_for_SKU],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01')
