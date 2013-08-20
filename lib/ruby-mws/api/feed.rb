@@ -5,7 +5,9 @@ module MWS
       def_request(:get_feed_submission_list,
                  :verb => :get,
                  :uri => '/',
-                 :version => '2009-01-01')
+                 :version => '2009-01-01', 
+                 :lists => {
++                   :feed_submission_id_list => "FeedSubmissionIdList.Id"}))
 
       def_request(:get_feed_submission_result,
                  :verb => :get,
