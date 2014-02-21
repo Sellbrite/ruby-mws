@@ -12,7 +12,9 @@ module MWS
         :uri => '/',
         :version => '2009-01-01',
         :lists => {
-          :report_request_id_list => "ReportRequestIdList.Id"
+          :report_request_id_list => "ReportRequestIdList.Id",
+          :report_type_list => "ReportTypeList.Type",
+          :report_processing_status_list => "ReportProcessingStatusList.Status"
         },
         :mods => [
           lambda {|r| r.report_requests = [r.report_request_info].flatten}
