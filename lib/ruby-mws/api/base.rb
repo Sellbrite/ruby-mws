@@ -53,12 +53,17 @@ module MWS
                else
                  self.class.send(params[:verb], query.request_uri)
                end
-
-        @response = if resp.is_a?(Hash)
-          Response.parse resp, name, params
-        else
+        
+        @response = if resp.respond_to?(:parsed_response)
           BinaryResponse.parse resp, name, params
+        else
+          Response.parse resp, name, params
         end
+        # @response = if resp.is_a?(Hash)
+        #   Response.parse resp, name, params
+        # else
+        #   BinaryResponse.parse resp, name, params
+        # end
 
         if @response.respond_to?(:next_token) and @next[:token] = @response.next_token  # modifying, not comparing
           @next[:action] = name.match(/_by_next_token/) ? name : "#{name}_by_next_token"
