@@ -45,25 +45,20 @@ module MWS
 
         params[:lists] ||= {}
         params[:lists][:marketplace_id] = "MarketplaceId.Id" unless params.has_key?(:marketplace_id)
-        
+
         query = Query.new params
-        
-        resp = if params[:verb] == :post 
+
+        resp = if params[:verb] == :post
                  self.class.post(query.request_uri, params[:options])
                else
                  self.class.send(params[:verb], query.request_uri)
                end
-        
-        @response = if resp.respond_to?(:parsed_response)
-          BinaryResponse.parse resp, name, params
-        else
+
+        @response = if resp.is_a?(Hash)
           Response.parse resp, name, params
+        else
+          BinaryResponse.parse resp, name, params
         end
-        # @response = if resp.is_a?(Hash)
-        #   Response.parse resp, name, params
-        # else
-        #   BinaryResponse.parse resp, name, params
-        # end
 
         if @response.respond_to?(:next_token) and @next[:token] = @response.next_token  # modifying, not comparing
           @next[:action] = name.match(/_by_next_token/) ? name : "#{name}_by_next_token"

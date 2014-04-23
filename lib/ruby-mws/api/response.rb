@@ -2,12 +2,14 @@ module MWS
   module API
 
     class Response < Hashie::Rash
-      
+
       def self.parse(hash, name, params)
         rash = self.new(hash)
         handle_error_response(rash["error_response"]["error"]) unless rash["error_response"].nil?
 
-        if rash["#{name}_response"]
+        if rash['parsed_response']
+          rash = rash["parsed_response"]
+        elsif rash["#{name}_response"]
           rash = rash["#{name}_response"]
         elsif rash["amazon_envelope"]
           rash = rash["amazon_envelope"]
@@ -15,11 +17,13 @@ module MWS
           raise BadResponseError, "received non-matching response type #{rash.keys}"
         end
 
-        if rash = rash["#{name}_result"]
+        if temp = rash["#{name}_result"]
           # only runs mods if correct result is present
-          params[:mods].each {|mod| mod.call(rash) } if params[:mods]
+          params[:mods].each {|mod| mod.call(temp) } if params[:mods]
+          return temp
+        else
+          return rash
         end
-        rash
         # rash = rash["#{name}_result"]
         # puts rash.class
         # puts rash.first.asin
