@@ -7,7 +7,8 @@ module MWS
         :uri => '/Orders/2011-01-01',
         :version => '2011-01-01',
         :lists => {
-          :order_status => "OrderStatus.Status"
+          :order_status => "OrderStatus.Status",
+          :marketplace_id => "MarketplaceId.Id"
         },
         :mods => [
           lambda {|r| r.orders = r.orders.order if r.orders}
