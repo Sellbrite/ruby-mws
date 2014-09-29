@@ -48,8 +48,6 @@ module MWS
 
         query = Query.new params
 
-        puts query.request_uri
-
         resp = if params[:verb] == :post
                  self.class.post(query.request_uri, params[:options])
                else
