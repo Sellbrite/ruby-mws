@@ -1,7 +1,7 @@
 module MWS
 
   class Base
-    
+
     attr_accessor :connection
 
     def initialize(options={})
@@ -15,7 +15,7 @@ module MWS
     def inventory
       @inventory ||= MWS::API::Inventory.new(@connection)
     end
-    
+
     def products
       @products ||= MWS::API::Product.new(@connection)
     end
@@ -23,9 +23,13 @@ module MWS
     def reports
       @reports ||= MWS::API::Report.new(@connection)
     end
-    
+
     def feeds
       @feeds ||= MWS::API::Feed.new(@connection)
+    end
+
+    def sellers
+      @sellers ||= MWS::API::Seller.new(@connection)
     end
 
 
