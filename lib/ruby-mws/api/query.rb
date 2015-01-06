@@ -39,6 +39,7 @@ module MWS
         # hack to capitalize AWS in param names
         # TODO: Allow for multiple marketplace ids
         params = Hash[params.map{|k,v| [k.camelize.sub(/Aws/,'AWS'), v]}]
+        params = Hash[params.map{|k,v| [k.camelize.sub(/Mws/,'MWS'), v]}]
 
         params = params.sort.map! { |p| "#{p[0]}=#{process_param(p[1])}" }
         params.join('&')
