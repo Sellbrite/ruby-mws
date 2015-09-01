@@ -5,7 +5,10 @@ module MWS
       def_request [:request_report],
         :verb => :get,
         :uri => '/',
-        :version => '2009-01-01'
+        :version => '2009-01-01',
+        :lists => {
+          :marketplace_id_list => "MarketplaceIdList.Id"
+        }
 
       def_request [:get_report_request_list],
         :verb => :get,
