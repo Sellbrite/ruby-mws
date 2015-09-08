@@ -8,6 +8,11 @@ module MWS
         :uri => '/Sellers/2011-07-01',
         :version => '2011-07-01'
 
+      def_request [:list_marketplace_participations],
+        :verb => :post,
+        :uri => '/Sellers/2011-07-01',
+        :version => '2011-07-01'
+
     end
 
   end
