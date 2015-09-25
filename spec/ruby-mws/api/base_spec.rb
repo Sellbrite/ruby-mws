@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe MWS::API::Base do
-  class FakeApi < MWS::API::Base
+describe RMWS::API::Base do
+  class FakeApi < RMWS::API::Base
     def self.test_params
       {
         :verb    => :get,
@@ -38,5 +38,5 @@ describe MWS::API::Base do
       lambda{ @api.list_fake_objects }.should raise_error TestWorksError
     end
   end
-  
+
 end

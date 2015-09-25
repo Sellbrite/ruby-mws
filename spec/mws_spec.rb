@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe MWS do
+describe RMWS do
 
   context 'connect' do
-    it 'should create a MWS::Base object' do
-      MWS.new(auth_params).class.should == MWS::Base
+    it 'should create a RMWS::Base object' do
+      RMWS.new(auth_params).class.should == RMWS::Base
     end
   end
 

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe MWS::API::Query do 
+describe RMWS::API::Query do
   before do
-    @query = MWS::API::Query.new(default_params)
+    @query = RMWS::API::Query.new(default_params)
     @query.stub!(:signature).and_return("SIGNATURE")
   end
 
@@ -40,4 +40,3 @@ AWSAccessKeyId=#{default_params[:aws_access_key_id]}&Action=ListOrders&LastUpdat
   end
 
 end
-  

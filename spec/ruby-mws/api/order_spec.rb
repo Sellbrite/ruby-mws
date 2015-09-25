@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe MWS::API::Order do
+describe RMWS::API::Order do
 
   before :all do
     EphemeralResponse.activate
-    @mws = MWS.new(auth_params)
+    @mws = RMWS.new(auth_params)
     @timestamp = "2012-04-25T21:42:55-04:00"
   end
 

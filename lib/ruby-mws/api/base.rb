@@ -1,15 +1,15 @@
 # This class serves as a parent class to the API classes.
 # It shares connection handling, query string building, ?? among the models.
 
-module MWS
+module RMWS
   module API
 
     class Base
       include HTTParty
-      parser MWS::API::BinaryParser
+      parser RMWS::API::BinaryParser
       #debug_output $stderr  # only in development
       #format :xml
-      headers "User-Agent"   => "ruby-mws/#{MWS::VERSION} (Language=Ruby/1.9.3-p0)"
+      headers "User-Agent"   => "ruby-mws/#{RMWS::VERSION} (Language=Ruby/1.9.3-p0)"
       headers "Content-Type" => "text/xml"
 
       attr_accessor :response

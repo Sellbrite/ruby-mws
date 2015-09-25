@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe MWS::API::Product do
+describe RMWS::API::Product do
 
   before :all do
     EphemeralResponse.activate
-    @mws = MWS.new(auth_params)
+    @mws = RMWS.new(auth_params)
     @timestamp = nil #"2013-04-25T21:42:11-04:00"
   end
 
@@ -16,7 +16,7 @@ describe MWS::API::Product do
           :asin_list => %w[B007NLO6CW B007NLO6JA], :marketplace_id => 'ATVPDKIKX0DER'
           products.should be_an_instance_of Array
           products.size.should eq(2)
-          
+
           #products.each do |product|
           #  listings = product.lowest_offer_listings.lowest_offer_listing.flatten
           #  listings.each do |listing|

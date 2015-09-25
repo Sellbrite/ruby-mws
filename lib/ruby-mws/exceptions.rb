@@ -1,17 +1,17 @@
-module MWS
+module RMWS
 
-  class MWSException < StandardError
+  class RMWSException < StandardError
   end
 
-  class MissingConnectionOptions < MWSException
+  class MissingConnectionOptions < RMWSException
   end
 
-  class NoNextToken < MWSException
+  class NoNextToken < RMWSException
   end
 
-  class ErrorResponse < MWSException
+  class ErrorResponse < RMWSException
   end
 
-  class BadResponseError < MWSException
+  class BadResponseError < RMWSException
   end
 end

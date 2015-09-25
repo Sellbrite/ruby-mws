@@ -1,13 +1,13 @@
-module MWS
+module RMWS
   module API
 
     class Feed < Base
       def_request(:get_feed_submission_list,
                  :verb => :get,
                  :uri => '/',
-                 :version => '2009-01-01', 
+                 :version => '2009-01-01',
                  :lists => {
-                   :feed_submission_id_list => "FeedSubmissionIdList.Id", 
+                   :feed_submission_id_list => "FeedSubmissionIdList.Id",
                    :feed_type_list => "FeedTypeList.Type",
                    :feed_processing_status_list => "FeedProcessingStatusList.Status",
                  })

@@ -11,7 +11,7 @@ RSpec.configure do |config|
   end
 
   def mws_object
-    @mws_object ||= MWS.new(auth_params)
+    @mws_object ||= RMWS.new(auth_params)
   end
 
   # To test, create spec/credentials.yml or fill in below

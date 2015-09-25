@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe MWS::API::Report do
+describe RMWS::API::Report do
 
   before :all do
     EphemeralResponse.activate
-    @mws = MWS.new(auth_params)
+    @mws = RMWS.new(auth_params)
     @timestamp = nil #{}"2013-07-11T01:22:25-07:00"
   end
 
@@ -24,7 +24,7 @@ describe MWS::API::Report do
       end
     end
 
-    
+
 
 
     describe "poll to see if report is ready" do
@@ -66,9 +66,9 @@ describe MWS::API::Report do
         #     line.split("\t").each_with_index do |v, i|
         #       puts "#{headers[i]} : #{v}"
         #     end
-        #   end       
+        #   end
         # end
-   
+
 
       end
 

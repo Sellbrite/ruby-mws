@@ -7,9 +7,9 @@ require 'openssl'
 require 'hashie'
 require 'rash'
 
-module MWS
+module RMWS
   def self.new(options={})
-    MWS::Base.new(options.symbolize_keys!)
+    RMWS::Base.new(options.symbolize_keys!)
   end
 end
 

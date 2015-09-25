@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe MWS::Connection do
+describe RMWS::Connection do
 
   context "initialize" do
     it "should intialize with all requires params" do
-      conn = MWS::Connection.new auth_params
-      conn.class.should == MWS::Connection
+      conn = RMWS::Connection.new auth_params
+      conn.class.should == RMWS::Connection
       auth_params.each do |k,v|
         conn.send(k).should == v
       end
@@ -14,12 +14,12 @@ describe MWS::Connection do
 
     it "should raise an exception when a required param is missing" do
       auth_params.each do |k,v|
-        lambda { MWS::Connection.new auth_params.delete(k) }.should raise_error
+        lambda { RMWS::Connection.new auth_params.delete(k) }.should raise_error
       end
     end
 
     it "should override host when sent a host param" do
-      conn = MWS::Connection.new auth_params.merge({host: 'newhost.com'})
+      conn = RMWS::Connection.new auth_params.merge({host: 'newhost.com'})
       conn.host.should == 'newhost.com'
     end
   end

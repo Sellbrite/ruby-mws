@@ -1,41 +1,41 @@
-module MWS
+module RMWS
 
   class Base
 
     attr_accessor :connection
 
     def initialize(options={})
-      @connection = MWS::Connection.new(options)
+      @connection = RMWS::Connection.new(options)
     end
 
     def orders
-      @orders ||= MWS::API::Order.new(@connection)
+      @orders ||= RMWS::API::Order.new(@connection)
     end
 
     def inventory
-      @inventory ||= MWS::API::Inventory.new(@connection)
+      @inventory ||= RMWS::API::Inventory.new(@connection)
     end
 
     def products
-      @products ||= MWS::API::Product.new(@connection)
+      @products ||= RMWS::API::Product.new(@connection)
     end
 
     def reports
-      @reports ||= MWS::API::Report.new(@connection)
+      @reports ||= RMWS::API::Report.new(@connection)
     end
 
     def feeds
-      @feeds ||= MWS::API::Feed.new(@connection)
+      @feeds ||= RMWS::API::Feed.new(@connection)
     end
 
     def sellers
-      @sellers ||= MWS::API::Seller.new(@connection)
+      @sellers ||= RMWS::API::Seller.new(@connection)
     end
 
 
     # serves as a server ping
     def self.server_time
-      MWS::Connection.server_time
+      RMWS::Connection.server_time
     end
 
   end

@@ -1,3 +1,6 @@
+*NOTE search and replaced MWS -> RMWS due to namespace conflict with peddler
+
+
 This is a fork of ruby-mws by Erik Lyngvd.  I'm working on adding report requests as well as product feeds.  I'll add some tests as I go along.  I also updated this readme to describe how to test.
 
 ruby-mws
@@ -7,7 +10,7 @@ by Erik Lyngved
 
 ### Read me!
 
-ruby-mws is a Ruby gem that wraps the Amazon Marketplace Web Service (MWS) API. Right now it only supports Amazon's Order and Inventory APIs.
+ruby-mws is a Ruby gem that wraps the Amazon Marketplace Web Service (RMWS) API. Right now it only supports Amazon's Order and Inventory APIs.
 
 I made this gem for my own purposes, and it's not fully featured. Pull requests or bug reports are always welcome.
 
@@ -16,13 +19,13 @@ Quick Start
 
 To quickly test your connection to the service without credentials, you can ping the server, which returns server time in UTC:
 
-    MWS::Base.server_time
+    RMWS::Base.server_time
 
 ### Initialization
 
 Pass in your developer account credentials. All four params below are required.
 
-    mws = MWS.new (:aws_access_key_id => "AKIAIFKEXAMPLE4WZHHA",
+    mws = RMWS.new (:aws_access_key_id => "AKIAIFKEXAMPLE4WZHHA",
       :secret_access_key => "abc123def456/SECRET/+ghi789jkl",
       :seller_id => "A27WEXAMPLEBXY",
       :marketplace_id => "ATVPDKIKX0DER")
@@ -75,9 +78,9 @@ Or if you need to, you can save the next_token and go about the manual way as pe
 API
 ---
 
-    @mws = MWS.new(authentication_hash)   # initialize the connection object (see above)
+    @mws = RMWS.new(authentication_hash)   # initialize the connection object (see above)
 
-This object can be used to access all API services. Below are examples on how to make the different requests that are available so far. Refer to the [Amazon MWS Reference Docs](https://developer.amazonservices.com/) for available fields for each request.
+This object can be used to access all API services. Below are examples on how to make the different requests that are available so far. Refer to the [Amazon RMWS Reference Docs](https://developer.amazonservices.com/) for available fields for each request.
 
 ### Orders API
 
@@ -106,7 +109,7 @@ TESTS
 -----
 
 In order to add your own api call(s) which is not yet implemented by this wrapper add some tests that describe how your make your request
-and what you expect in the response.  
+and what you expect in the response.
 
 Add a spec/credentials.yml file:
 
@@ -121,4 +124,4 @@ Hence, credentials.yml and ephemeral_response folder are added to the .gitignore
 
 As you run the tests, the api calls are cached by ephemeral_response gem.  A folder called ephermal_response is created in the spec/fixtures directory.  Any api request that has the repeated same parameters will be loaded from the cache.  That is why in the tests you see timestamp being passed, even though this is not required, (if left nil, the current time is used), but by passing it in the rspec tests you can keep using the cached ephermal_response so that you don't have to keep hitting amazon.
 
-I suggest you hit the api once.  Generate the cached yml file.  Then copy and paste the timestamp from the request back into the rspec for future tests.  
+I suggest you hit the api once.  Generate the cached yml file.  Then copy and paste the timestamp from the request back into the rspec for future tests.

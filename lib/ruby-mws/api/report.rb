@@ -1,4 +1,4 @@
-module MWS
+module RMWS
   module API
 
     class Report < Base
@@ -32,7 +32,7 @@ module MWS
         :verb => :get,
         :uri => '/',
         :version => '2009-01-01'
-      
+
     end
 
   end
