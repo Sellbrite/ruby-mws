@@ -9,7 +9,7 @@ module RMWS
       @private_attrs = [:secret_access_key]
 
       if options[:mws_auth_token].nil?
-        warn MissingConnectionOptions, "mws_auth_token will be required after March 31, 2015"
+        # warn MissingConnectionOptions, "mws_auth_token will be required after March 31, 2015"
       else
         @public_attrs.push(:mws_auth_token)
       end
