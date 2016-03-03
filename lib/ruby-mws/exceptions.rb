@@ -1,5 +1,4 @@
 module MWS
-
   class MWSException < StandardError
   end
 
@@ -9,9 +8,18 @@ module MWS
   class NoNextToken < MWSException
   end
 
+  class BadResponseError < MWSException
+  end
+
   class ErrorResponse < MWSException
   end
 
-  class BadResponseError < MWSException
+  class AccessDenied < ErrorResponse
+  end
+
+  class RequestThrottled < ErrorResponse
+  end
+
+  class InvalidParameterValue < ErrorResponse
   end
 end

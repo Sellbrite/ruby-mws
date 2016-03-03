@@ -34,10 +34,12 @@ module MWS
       def self.handle_error_response(error)
         msg = "#{error.code}: #{error.message}"
         msg << " -- #{error.detail}" unless error.detail.nil?
-        raise ErrorResponse, msg
+        if MWS.const_defined? error.code
+          raise "MWS::#{error.code}".constantize, msg
+        else
+          raise ErrorResponse, msg
+        end
       end
-
     end
-
   end
 end
