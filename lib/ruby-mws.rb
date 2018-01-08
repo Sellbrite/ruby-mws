@@ -5,7 +5,6 @@ require 'cgi'
 require 'openssl'
 # require 'hashie/mash'
 require 'hashie'
-require 'rash'
 
 module RMWS
   def self.new(options={})
