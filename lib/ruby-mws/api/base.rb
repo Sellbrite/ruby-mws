@@ -54,7 +54,9 @@ module RMWS
                  self.class.send(params[:verb], query.request_uri)
                end
 
-        @response = if resp.is_a?(Hash)
+        # NOTE: HTTParty::Response no longer of type Hash
+        # use respond_to? to test for Hash
+        @response = if resp.respond_to?(:each_pair)
           Response.parse resp, name, params
         else
           BinaryResponse.parse resp, name, params
